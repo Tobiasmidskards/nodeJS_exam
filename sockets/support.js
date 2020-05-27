@@ -1,6 +1,13 @@
 const escape = require('escape-html');
 
 class Support {
+
+    io;
+    socketServer;
+    userList;
+    adminList;
+    paired;
+
     constructor(app) {
         this.userList = [];
         this.adminList = [];
