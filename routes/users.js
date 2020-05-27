@@ -4,6 +4,7 @@ const User = require('../models/User.js');
 const Role = require('../models/Role.js');
 const fs = require('fs');
 
+// If there is no userobject in the session but the cookie persist, then remove it from the cookie.
 router.use((req, res, next) => {
     if (req.cookies.user_sid && !req.session.user) {
         res.clearCookie('user_sid');        
@@ -11,6 +12,7 @@ router.use((req, res, next) => {
     next();
 });
 
+// Get recipes from the logged in user.
 router.get('/user/recipes', async (req, res) => {
     if (req.session.user && req.cookies.user_sid) {
         try {

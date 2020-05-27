@@ -32,6 +32,7 @@ router.get("/login", (req, res) => {
      }    
  };
 
+ // Used to guard for users only
  let usersOnly = (req, res, next) => {
     if (req.session.user && req.cookies.user_sid) {
         next();
@@ -40,7 +41,8 @@ router.get("/login", (req, res) => {
     }    
 };
 
- let isAdmin = async (req, res, next) => {
+// Used to guard for admins only
+let isAdmin = async (req, res, next) => {
     if (req.session.user && req.cookies.user_sid) {
         const roleId = req.session.user.roleId;
         try {
@@ -83,6 +85,7 @@ router.get('/adminticket', isAdmin, usersOnly, async (req, res) => {
     return res.send(header + adminSupport + footer);
 })
 
+// Determine wheteher the user should see the user or the admin navbar
 async function showAdminNavbar(user) {
     const roleId = user.roleId;
 

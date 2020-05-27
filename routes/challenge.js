@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 const Recipe = require('../models/Recipe.js');
 
+// Route to recieve styles for the recipes select input
 router.get('/challenge/result/:styleId', async (req, res) => {
 
     let styleId = req.params.styleId;

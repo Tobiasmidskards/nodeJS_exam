@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-
 const escape = require('escape-html');
 const Recipe = require('../models/Recipe.js');
 const Style = require('../models/Style.js');
 const Role = require('../models/Role.js');
 
+// Check if the request is sent from an admin
 let isAdminAPI = async (req, res, next) => {
     if (req.session.user && req.cookies.user_sid) {
         const roleId = req.session.user.roleId;
@@ -25,6 +25,7 @@ let isAdminAPI = async (req, res, next) => {
     }    
 };
 
+// Check if the request is sent from a user
 let usersOnlyAPI = (req, res, next) => {
     if (req.session.user && req.cookies.user_sid) {
         next();
@@ -33,6 +34,7 @@ let usersOnlyAPI = (req, res, next) => {
     }    
 };
 
+// Get all recipes with the styles associated attatched
 router.get('/recipes', async (req, res) => {
     try {
         const recipes = await Recipe.query().select().withGraphFetched('style');
@@ -43,6 +45,7 @@ router.get('/recipes', async (req, res) => {
     }
 });
 
+// Get a single recipe by the recipe ID
 router.get('/recipes/get/:recipeId', async (req, res) => {
     let recipeId = req.params.recipeId
 
@@ -65,7 +68,7 @@ router.get('/recipes/get/:recipeId', async (req, res) => {
 
 });
 
-
+// Create a recipe
 router.post('/recipes/create', usersOnlyAPI, async (req, res) => {
     const { name, prepTime, styleId, description, link} = req.body;
 
@@ -93,7 +96,7 @@ router.post('/recipes/create', usersOnlyAPI, async (req, res) => {
     
 })
 
-
+// Update a recipe
 router.post('/recipes/update', usersOnlyAPI, async (req, res) => {
     const { recipeId, name, prepTime, styleId, description, link} = req.body;
 
@@ -132,6 +135,7 @@ router.post('/recipes/update', usersOnlyAPI, async (req, res) => {
     
 })
 
+// Delete a recipe
 router.get('/recipes/delete/:recipeId', usersOnlyAPI, async (req, res) => {
 
     let recipeId = req.params.recipeId;
@@ -155,6 +159,7 @@ router.get('/recipes/delete/:recipeId', usersOnlyAPI, async (req, res) => {
     } 
 });
 
+// Like a recipe
 router.get('/recipes/like/:recipeId', async (req, res) => {
 
     let recipeId = req.params.recipeId;
@@ -178,6 +183,7 @@ router.get('/recipes/like/:recipeId', async (req, res) => {
 
 });
 
+// Get all unapproved reciped
 router.get('/recipes/unapproved', async (req, res) => {
     try {
         const recipes = await Recipe.query().select().withGraphFetched('style').where('approved', '=', false);
@@ -188,6 +194,7 @@ router.get('/recipes/unapproved', async (req, res) => {
     }
 });
 
+// Approve a recipe, but only if its from an admin
 router.post('/recipes/approve', isAdminAPI, async (req, res) => {
     let id = req.body.id;
 
@@ -205,6 +212,7 @@ router.post('/recipes/approve', isAdminAPI, async (req, res) => {
     }
 });
 
+// Get styles
 router.get('/styles', async (req, res) => {
     try {
         const styles = await Style.query().select();
@@ -214,22 +222,5 @@ router.get('/styles', async (req, res) => {
         return res.status(500).send({ response: "Something went wrong with the database: " + err });
     }
 });
-
-let entityMap = {
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;',
-    '/': '&#x2F;',
-    '`': '&#x60;',
-    '=': '&#x3D;'
-  };
-  
-  function escapeHtml (string) {
-    return String(string).replace(/[&<>"'`=\/]/g, function (s) {
-      return entityMap[s];
-    });
-  }
 
 module.exports = router

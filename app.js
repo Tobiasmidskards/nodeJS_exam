@@ -8,9 +8,13 @@ const http = require('http');
 
 const server = http.createServer(app);
 
+// Assigning static folder for static files such as templates and assets
 app.use(express.static('public'));
+
+// Using middleware to parse json
 app.use(express.json());
 
+// Setting up session for authentication
 app.use(session({
     key: 'user_sid',
     secret: require('./config/mysqlCredentials').sessionSecret,
@@ -21,6 +25,7 @@ app.use(session({
     }
 }))
 
+// Middleware for parsing cookies
 app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({
@@ -57,6 +62,8 @@ const knexFile = require('./knexfile.js');
 const knex = Knex(knexFile.development);
 
 Model.knex(knex);
+
+// start listening on port 3000
 
 const PORT = 3000;
 

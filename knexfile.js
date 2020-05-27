@@ -10,6 +10,7 @@ module.exports = {
       user:     credentials.user,
       password: credentials.password
     },
+    // To user_id ~ userId
     ...knexSnakeCaseMappers()
   }
 
