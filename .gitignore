@@ -1,0 +1,4 @@
+node_modules/
+config/mysqlCredentials.js
+nodemon.json
+package-lock.json

@@ -1,0 +1,47 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha256-Dul4c09cdrWKXVtallPxF558lwxMwCC8dXJdZ0PVW54=" crossorigin="anonymous"></script>
+
+<div class="admin-support">
+    <div class="support-header" id="s-header">
+        Chat with your clients !
+    </div>
+    <div class="support-body">
+        <div id="messages"></div>
+        <div class="send">
+            <input class="form-control" id="input" type="text">
+            <button id="btn-submit" class="btn btn-secondary">SEND</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    startChat();
+
+    function startChat() {
+        let socket = io.connect("localhost:4000")
+        socket.emit("MESSAGE", { role: 'ADMIN' });
+
+        $('#messages').prepend(`<div id="message">Waiting for client..</div>`);
+
+        socket.on("MESSAGE", data => {
+            switch(data) {
+                case 'USERCONNECTED':
+                    $('#messages').prepend(`<div id="message">Client is connected!</div>`);
+                    break;
+                case 'USERDISCONNECTED':
+                    $('#messages').prepend(`<div id="message">Client has disconnected..</div>`);
+                    break;
+                default: 
+                    $('#messages').prepend(`<div id="message"><b>Client</b>: ${data}</div>`)
+                    break;
+            }
+        })
+
+        $('#btn-submit').on('click', () => {
+            let message = $('#input').val();
+            $('#messages').prepend(`<div id="message"><b>You</b>: ${message}</div>`)
+            $('#input').val('')
+            socket.emit("MESSAGE", { message });
+        })
+    }
+</script>
+</html>

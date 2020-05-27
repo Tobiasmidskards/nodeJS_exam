@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-5">
+            <h3>
+                Support 
+            </h3>
+            <hr>
+            <div class="tickets">
+                <div id="ticket-wrapper">
+                    <p id="new-tickets"></p>
+                    <button class="btn btn-secondary btn-wide" id="resolve-ticket-button">Resolve</button>
+                    <p class="mt-3"><small>Please allow pop-ups</small></p>
+                </div>
+                <div id="ticket-wrapper-two">
+                    <p>You have no waiting tickets.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let newTickets = $('#new-tickets');
+    let button = $('#resolve-ticket-button');
+
+    let ticketWrapper = $('#ticket-wrapper');
+    let ticketWrapperTwo = $('#ticket-wrapper-two');
+
+    ticketWrapper.hide();
+
+    button.on('click', () => {
+        window.open("/adminticket", "Support ticket", "width=250,height=350");
+    })
+
+    let interval = setInterval(() => {
+        $.ajax('/support/users')
+        .done((response) => {
+            let number = response.numberOfClients;
+
+            if (number > 0) {
+                newTickets.text('You have ' + response.numberOfClients + ' in queue')
+                newTickets.show();
+                ticketWrapper.show();
+                ticketWrapperTwo.hide();
+            } else {
+                ticketWrapper.hide();
+                ticketWrapperTwo.show();
+            }
+    })
+    }, 2000)
+
+
+
+</script>

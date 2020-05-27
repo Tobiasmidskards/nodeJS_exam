@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="tile">
+                <div class="tile-header">
+                    <h3>Foodpicker</h3>
+                </div>
+                <div class="tile-body" id="start">
+                    <h5>What should we eat today?</h5>
+                    <button onclick="picker.nextState()" class="btn btn-secondary btn-wide mt-3">Start</button>
+                </div>
+                <div class="tile-body" id="challenge">
+                    <h5>Choose one!</h5>
+                    <button class="btn btn-black btn-wide mt-3" onclick="picker.runChallenge(1)" id="first">This</button>
+                    <button class="btn btn-secondary btn-wide mt-3" onclick="picker.runChallenge(0)" id="second">That</button>
+                    <p class="mt-3 mb-0"><small>Which one would you like the most?</small></p>
+                </div>
+                <div class="tile-body" id="result">
+                    <h5>Bon appétit</h5>
+                    <hr>
+                    <h4 id="style"></h3>
+                    <h3 id="name"></h3>
+                    <p><small id="prepTime"></small></p>
+                    <p>Go to <a href="" id="link">recipe</a>!</p>
+                    <hr>
+                    <p id="description"></p>
+                    <button class="btn btn-black btn-wide mt-3" onclick="picker.fetchResult()" id="first">Shuffle</button>
+                    <button class="btn btn-secondary btn-wide mt-3" onclick="picker.reset()" id="first">Try again</button>
+                    <hr>
+                    <button class="btn btn-black btn-wide mt-3" id="likeButton" onclick="picker.like()" id="first">Like</button>
+                    <p><small id="likes"></small></p>
+                </div>
+                <div class="tile-body" id="error">
+                    <h5>No recipe was found :-(</h5>
+                    <button class="btn btn-secondary btn-wide mt-3" onclick="picker.reset()" id="first">Try again</button>
+                </div>
+                <p class="mt-2 text-right"><small>Log in <a href="/login">here</a></small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/challenge.js"></script>

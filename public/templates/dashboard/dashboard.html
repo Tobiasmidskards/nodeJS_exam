@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-5">
+            <h3>
+                Your recipes
+            </h3>
+            <table class="table table-striped recipes-table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Style
+                        </th>
+                        <th>
+                            Min. prep time
+                        </th>
+                        <th>
+                            Approved
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="recipes">
+                    <tr id="message">
+                        <td colspan="4" style="text-align: center;">
+                            <h4>Loading..</h4>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="recipeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="tile">
+              <div class="tile-body noshadow" id="result">
+                <h4 id="modalStyle"></h3>
+                <h3 id="modalName"></h3>
+                <p><small id="modalPrepTime"></small></p>
+                <p>Go to <a href="" id="modalLink">recipe</a>!</p>
+                <hr>
+                <p id="modalDesc"></p>
+                <p><small id="modalLikes"></small></p>
+                <button onclick="editRecipe()" type="button" class="btn btn-black btn-wide mt-3">Edit</button>
+                <button onclick="deleteRecipe()" type="button" class="btn btn-danger btn-wide mt-3">Delete</button>
+                <hr>
+                <button type="button" class="btn btn-secondary btn-wide mt-3" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script src="../../assets/js/myRecipes.js"></script>

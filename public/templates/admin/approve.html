@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-5">
+            <h3>
+                Recipes to approve
+            </h3>
+            <table class="table table-striped recipes-table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Style
+                        </th>
+                        <th>
+                            Min. prep time
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="recipes">
+                    <tr id="message">
+                        <td colspan="3" style="text-align: center;">
+                            <h4>Loading..</h4>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="recipeModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="tile">
+              <div class="tile-body noshadow" id="result">
+                <h4 id="modalStyle"></h3>
+                <h3 id="modalName"></h3>
+                <p><small id="prepTime"></small></p>
+                <p>Go to <a href="" id="modalLink">recipe</a>!</p>
+                <hr>
+                <p id="modalDesc"></p>
+                <button onclick="approve()" type="button" class="btn btn-black btn-wide mt-3">Approve</button>
+                <button type="button" class="btn btn-secondary btn-wide mt-3" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
+</div>
+
+<script src="../../assets/js/approve.js"></script>

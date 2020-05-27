@@ -1,0 +1,180 @@
+body {
+    background-color: #f5f5f5;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.auth-tile {
+    width: 300px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+}
+
+.tile {
+    width: 600px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    position: fixed;
+}
+
+.tile .tile-body {
+    text-align: center;
+}
+
+.tile .tile-body h5, .tile .tile-body h3, .tile .tile-body h4{
+    text-align: center;
+}
+
+.tile .tile-body p {
+    text-align: center;
+}
+
+.btn-wide {
+    min-width: 200px;
+}
+
+.auth-tile .tile-body, .tile-body {
+    background-color: white;
+    box-shadow: 5px 5px 3px 0px #e4e4e4;
+    padding: 30px 25px;    
+}
+
+.auth-tile .tile-header h3 {
+    font-size: 2em;
+}
+
+#alert {
+    display: none;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background-color: #dedede;
+    padding: 15px 0px;
+}
+
+ul > li a {
+    color: black;
+}
+
+.btn-black {
+    background-color: #272727;
+    border-color: #272727;
+    color: white;
+}
+
+.btn-black:hover {
+    background-color: #373737;
+    border-color: #373737;
+    color: white;
+}
+
+.btn-red {
+    background-color: #b13131;
+    color: white;
+}
+
+.btn-red:hover {
+    background-color: #b93331;
+    color: white;
+}
+
+.recipes-table, .client-table {
+    table-layout: fixed;
+}
+
+.recipes-table thead{
+    font-weight: bold;
+}
+
+.recipes-table td, .client-table td{
+    cursor: pointer;
+}
+
+.recipes-table th:last-child, .recipes-table td:last-child {
+    text-align: right;
+}
+
+#inHours {
+    text-align: center;
+    display: none;
+}
+
+#error-message {
+    text-align: center;
+    color: red;
+    margin-top: 20px;
+    display: none;
+}
+
+.noshadow {
+    box-shadow: none;
+}
+
+.modal-content {
+    border: none;
+}
+
+.support {
+    position: fixed;
+    bottom: 0;
+    right: 10px;
+    background-color: whitesmoke;
+    border: 1px solid gray;
+}
+
+.support-header {
+    background-color: #272727;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.support .support-body {
+    height: 350px;
+    width: 250px;
+    border-radius: 2px;
+}
+
+.admin-support .support-body {
+    border-radius: 2px;
+}
+
+.support-body.collapsed {
+    display: none;
+}
+
+.support #messages {
+    padding: 20px 10px;
+    font-size: 10px;
+}
+
+.admin-support #messages {
+    padding: 20px 10px;
+    font-size: 12px;
+}
+
+.support #message, .admin-support #message {
+    border-bottom: 1px solid lightgray;
+}
+
+.send {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    width: 100%;
+}
+
+.send * {
+    height: 40px;
+    border-radius: 0;
+    margin: 0;
+}
+
+.tickets {
+    text-align: center;
+}
