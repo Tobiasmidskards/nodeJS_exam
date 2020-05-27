@@ -24,7 +24,7 @@
     })
 
     function startChat() {
-        socket = io.connect("localhost:4000")
+        socket = io.connect("/:4000")
         socket.emit("MESSAGE", { role: 'USER' });
 
         $('#messages').prepend(`<div id="message">Waiting for support..</div>`);
