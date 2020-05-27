@@ -12,8 +12,8 @@ const approvePage = fs.readFileSync("public/templates/admin/approve.html", "utf8
 const dashBoardPage = fs.readFileSync("public/templates/dashboard/dashboard.html", "utf8");
 const loginPage = fs.readFileSync("public/templates/auth/login.html", "utf8");
 const registerPage = fs.readFileSync("public/templates/auth/register.html", "utf8");
-const adminSupportPage = fs.readFileSync("public/templates/adminsupportpage.html", "utf8");
-const adminSupport = fs.readFileSync("public/templates/adminsupport.html", "utf8");
+const adminSupportPage = fs.readFileSync("public/templates/admin/adminsupportpage.html", "utf8");
+const adminSupport = fs.readFileSync("public/templates/support/adminsupport.html", "utf8");
 
 router.get("/login", (req, res) => {
     return res.send(header + loginPage + footer);
