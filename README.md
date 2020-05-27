@@ -1,6 +1,6 @@
 # FoodPicker
 
-## Features!
+## Features
 
     - Find out what you want to eat with the challenge
     - Authentication
