@@ -61,6 +61,11 @@ ul > li a {
     color: black;
 }
 
+ul > li a:hover {
+    color: grey;
+    text-decoration: none;
+}
+
 .btn-black {
     background-color: #272727;
     border-color: #272727;
