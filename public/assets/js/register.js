@@ -1,4 +1,5 @@
 function validate(event) {
+    event.preventDefault();
        
     let username = $('#username').val();
     let password = $('#password').val();

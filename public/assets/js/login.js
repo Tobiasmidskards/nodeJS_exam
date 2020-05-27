@@ -2,6 +2,7 @@ let alertDiv = $('#alert');
 let errors = [];
 
 function validate(event) {
+    event.preventDefault();
     errors = [];
     alertDiv.text("");
     alertDiv.hide();

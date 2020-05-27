@@ -5,11 +5,13 @@
                 <div class="tile-body">
                     <h3>Login</h3>
                     <div class="alert alert-danger" id="alert"></div>
-                    <div class="form-group">
-                        <input placeholder="Username" type="text" class="form-control" id="username" name="username">
-                        <input placeholder="Password" type="password" class="form-control mt-2" id="password" name="username">
-                        <button type="submit" onclick="validate(event)" class="mt-2 btn btn-secondary form-control">Login</button>
-                    </div>
+                    <form action="#" onsubmit="validate(event)">
+                        <div class="form-group">
+                            <input placeholder="Username" type="text" class="form-control" id="username" name="username">
+                            <input placeholder="Password" type="password" class="form-control mt-2" id="password" name="username">
+                            <button type="submit" class="mt-2 btn btn-secondary form-control">Login</button>
+                        </div>
+                    </form>
                     <small style="text-align:center;display: block;">Not a user? Create an account <a href="/register">here</a>!</small>
                 </div>
                 <p class="mt-2 text-right"><small>Go to <a href="/">frontpage</a></small></p>
