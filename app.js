@@ -29,6 +29,9 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
+/* Add socket */
+let supportSocket = new support(app, server);
+
 /* Add routes */
 
 const defaultRoute = require('./routes/default.js');
@@ -63,6 +66,3 @@ server.listen(PORT, (error) => {
     }
     console.log("Server is running on port", PORT);
 })
-
-/* Add socket */
-let supportSocket = new support(app, server);
