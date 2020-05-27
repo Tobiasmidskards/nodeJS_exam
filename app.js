@@ -3,6 +3,7 @@ const app = express();
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const rateLimit = require("express-rate-limit");
 const support = require('./sockets/support.js');
 const http = require('http');
 
@@ -24,6 +25,16 @@ app.use(session({
         expires: 600000
     }
 }))
+
+/* Setup ratelimiter */
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 8 // limit each IP to 100 requests per windowMs
+});
+
+app.use('/login', limiter);
+app.use('/signup', limiter);
+app.use('/recipes/like/:recipeId', limiter);
 
 // Middleware for parsing cookies
 app.use(cookieParser());
