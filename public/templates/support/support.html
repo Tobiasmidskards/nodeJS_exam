@@ -6,10 +6,12 @@
     </div>
     <div class="support-body collapsed">
         <div id="messages"></div>
-        <div class="send">
-            <input class="form-control" id="input" type="text">
-            <button id="btn-submit" class="btn btn-secondary">SEND</button>
-        </div>
+        <form action="#" onsubmit="validate(event)">
+            <div class="send">
+                    <input class="form-control" id="input" type="text">
+                    <button id="btn-submit" type="submit" class="btn btn-secondary">SEND</button>
+            </div>
+        </form>
     </div>
 </div>
 

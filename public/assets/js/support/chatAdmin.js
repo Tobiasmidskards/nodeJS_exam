@@ -17,13 +17,16 @@ function startChat() {
                 break;
         }
     })
-
-    $('#btn-submit').on('click', () => {
-        let message = $('#input').val();
-        $('#messages').prepend(`<div id="message"><b>You</b>: ${message}</div>`)
-        $('#input').val('')
-        socket.emit("MESSAGE", { message });
-    })
 }
 
 startChat();
+
+function validate(event) {
+    event.preventDefault();
+    let message = $('#input').val();
+    if (message !== '') {
+        $('#messages').prepend(`<div id="message"><b>You</b>: ${message}</div>`)
+        $('#input').val('')
+        socket.emit("MESSAGE", { message });
+    }
+}

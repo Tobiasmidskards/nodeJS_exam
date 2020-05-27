@@ -26,11 +26,14 @@ function startChat() {
                 break;
         }
     })
+}
 
-    $('#btn-submit').on('click', () => {
-        let message = $('#input').val();
+function validate(event) {
+    event.preventDefault();
+    let message = $('#input').val();
+    if (message !== '') {
         $('#messages').prepend(`<div id="message"><b>You</b>: ${message}</div>`)
         $('#input').val('')
         socket.emit("MESSAGE", { message });
-    })
+    }
 }
