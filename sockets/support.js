@@ -16,6 +16,7 @@ class Support {
         this.startListening();
         this.pairClients(5000)
         this.serveApi(app);
+        console.log("Socket created");
     }
 
     serveApi(app) {
