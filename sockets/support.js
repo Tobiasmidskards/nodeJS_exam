@@ -20,7 +20,7 @@ class Support {
 
     serveApi(app) {
         app.get('/support/users', async (req, res) => {
-            return res.send({numberOfClients : 1/*this.userList.length*/})
+            return res.send({numberOfClients : this.userList.length})
         })
     }
 
