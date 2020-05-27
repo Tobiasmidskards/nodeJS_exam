@@ -4,6 +4,9 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const support = require('./sockets/support.js');
+const http = require('http');
+
+const server = http.createServer(app);
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -27,7 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 /* Add socket */
-let supportSocket = new support(app);
+let supportSocket = new support(app, server);
 
 /* Add routes */
 
@@ -57,7 +60,7 @@ Model.knex(knex);
 
 const PORT = 3000;
 
-app.listen(PORT, (error) => {
+server.listen(PORT, (error) => {
     if (error) {
         console.log(error);
     }

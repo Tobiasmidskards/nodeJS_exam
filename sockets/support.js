@@ -8,12 +8,11 @@ class Support {
     adminList;
     paired;
 
-    constructor(app) {
+    constructor(app, server) {
         this.userList = [];
         this.adminList = [];
         this.paired = [];
-        this.socketServer = require('http').createServer(app);
-        this.io = require('socket.io')(this.socketServer);
+        this.io = require('socket.io')(server);
         this.startListening();
         this.pairClients(5000)
         this.serveApi(app);
@@ -21,7 +20,7 @@ class Support {
 
     serveApi(app) {
         app.get('/support/users', async (req, res) => {
-            return res.send({numberOfClients : this.userList.length})
+            return res.send({numberOfClients : 1/*this.userList.length*/})
         })
     }
 
@@ -47,8 +46,6 @@ class Support {
     }
 
     startListening() {
-        this.socketServer.listen(4000)
-
         this.io.on('connection', socket => {
             socket.on('disconnect', (reason) => this.disconnected(socket));
             socket.on("MESSAGE", (message) => this.incoming(socket, message));            
