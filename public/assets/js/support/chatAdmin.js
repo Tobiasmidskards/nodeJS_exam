@@ -1,5 +1,7 @@
+let socket;
+
 function startChat() {
-    let socket = io.connect()
+    socket = io.connect()
     socket.emit("MESSAGE", { role: 'ADMIN' });
 
     $('#messages').prepend(`<div id="message">Waiting for client..</div>`);

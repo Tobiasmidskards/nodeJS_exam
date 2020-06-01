@@ -7,8 +7,8 @@ function validate(event) {
     alertDiv.text("");
     alertDiv.hide();
     
-    let username = 'admin';//$('#username').val();
-    let password = 'password';//$('#password').val();
+    let username = $('#username').val();
+    let password = $('#password').val();
 
     if(username.length < 4) {
         errors.push({
