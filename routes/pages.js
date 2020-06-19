@@ -101,8 +101,12 @@ async function showAdminNavbar(user) {
     return navbar;
 }
 
-router.get('/', sessionChecker, (req, res) => {
-    res.redirect('/login');
+router.get('/login', sessionChecker, (req, res) => {
+    res.redirect('/dashboard');
+});
+
+router.get('/register', sessionChecker, (req, res) => {
+    res.redirect('/dashboard');
 });
 
 module.exports = router;
