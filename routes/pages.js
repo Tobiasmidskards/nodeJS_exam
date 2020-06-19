@@ -15,22 +15,22 @@ const registerPage = fs.readFileSync("public/templates/auth/register.html", "utf
 const adminSupportPage = fs.readFileSync("public/templates/admin/adminsupportpage.html", "utf8");
 const adminSupport = fs.readFileSync("public/templates/support/adminsupport.html", "utf8");
 
-router.get("/login", (req, res) => {
+ // Checking for session
+ let sessionChecker = (req, res, next) => {
+    if (req.session.user && req.cookies.user_sid) {
+        res.redirect('/dashboard');
+    } else {
+        next();
+    }    
+};
+
+router.get("/login", sessionChecker, (req, res) => {
     return res.send(header + loginPage + footer);
  });
  
- router.get("/register", (req, res) => {
+ router.get("/register", sessionChecker, (req, res) => {
      return res.send(header + registerPage + footer);
  });
- 
- // Checking for session
- let sessionChecker = (req, res, next) => {
-     if (req.session.user && req.cookies.user_sid) {
-         res.redirect('/dashboard');
-     } else {
-         next();
-     }    
- };
 
  // Used to guard for users only
  let usersOnly = (req, res, next) => {
@@ -100,13 +100,5 @@ async function showAdminNavbar(user) {
 
     return navbar;
 }
-
-router.get('/login', sessionChecker, (req, res) => {
-    res.redirect('/dashboard');
-});
-
-router.get('/register', sessionChecker, (req, res) => {
-    res.redirect('/dashboard');
-});
 
 module.exports = router;
