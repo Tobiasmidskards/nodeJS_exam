@@ -12,8 +12,4 @@ router.get("/", (req, res) => {
     return res.send(header + index + support +footer);
  });
 
- router.get("/challenge/start", (req, res) => {
-    return res.send(header + challenge + footer);
- });
-
  module.exports = router
