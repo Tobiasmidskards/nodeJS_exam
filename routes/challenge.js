@@ -2,10 +2,6 @@ const router = require('express').Router();
 
 const Recipe = require('../models/Recipe.js');
 
-router.get("/challenge/start", (req, res) => {
-    return res.send(header + challenge + footer);
- });
-
 // Route to recieve styles for the recipes select input
 router.get('/challenge/result/:styleId', async (req, res) => {
 

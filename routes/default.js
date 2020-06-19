@@ -4,7 +4,6 @@ const fs = require('fs');
 const header = fs.readFileSync("public/templates/_partials/header.html", "utf8");
 const footer = fs.readFileSync("public/templates/_partials/footer.html", "utf8");
 const index = fs.readFileSync("public/templates/index.html", "utf8");
-const challenge = fs.readFileSync("public/templates/challenge/challenge.html", "utf8");
 
 const support = fs.readFileSync("public/templates/support/support.html", "utf8");
 

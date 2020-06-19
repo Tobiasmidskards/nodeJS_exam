@@ -14,6 +14,7 @@ const loginPage = fs.readFileSync("public/templates/auth/login.html", "utf8");
 const registerPage = fs.readFileSync("public/templates/auth/register.html", "utf8");
 const adminSupportPage = fs.readFileSync("public/templates/admin/adminsupportpage.html", "utf8");
 const adminSupport = fs.readFileSync("public/templates/support/adminsupport.html", "utf8");
+const challenge = fs.readFileSync("public/templates/challenge/challenge.html", "utf8");
 
  // Checking for session
  let sessionChecker = (req, res, next) => {
@@ -84,6 +85,10 @@ router.get('/support', isAdmin, usersOnly, async (req, res) => {
 router.get('/adminticket', isAdmin, usersOnly, async (req, res) => {
     return res.send(header + adminSupport + footer);
 })
+
+router.get("/challenge/start", (req, res) => {
+    return res.send(header + challenge + footer);
+ });
 
 // Determine wheteher the user should see the user or the admin navbar
 async function showAdminNavbar(user) {
